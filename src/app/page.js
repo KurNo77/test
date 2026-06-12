@@ -3,60 +3,64 @@ import { useEffect, useState } from 'react';
 import { useRouter } from 'next/navigation';
 import Link from 'next/link';
 import { useAuth } from '@/context/AuthContext';
-import { BookOpen, Users, BarChart2, Globe, ArrowRight } from 'lucide-react';
+import { BookOpen, Users, BarChart2, Globe, ArrowRight, Headphones, Tv, PlayCircle } from 'lucide-react';
 
 const ADS = [
   {
     icon: BookOpen,
-    color: 'text-gold-500',
-    iconBg: 'bg-gold-500/15 border-gold-500/30',
-    gradient: 'from-gold-500/10 via-navy-800 to-navy-900',
-    accent: 'bg-gold-500',
-    tag: 'For Authors',
-    title: 'Publish Your Book',
-    desc: 'Reach millions of readers on Amazon. List your book today and start earning royalties worldwide.',
-    cta: 'Learn More',
-    ctaClass: 'bg-gold-500 text-navy-900 hover:bg-gold-400',
-    dot: 'bg-gold-500',
+    brandColor: '#1D7A4E',
+    brandColorLight: 'rgba(29,122,78,0.15)',
+    brandColorBorder: 'rgba(29,122,78,0.35)',
+    glowColor: '#1D7A4E',
+    gradientFrom: 'rgba(29,122,78,0.12)',
+    brand: 'Barnes & Noble',
+    tag: 'Books & More',
+    title: 'Discover Your Next Great Read',
+    desc: 'Millions of books, eBooks, NOOK titles, and textbooks. Free shipping on orders over $35.',
+    cta: 'Shop Now',
+    barColor: '#1D7A4E',
   },
   {
-    icon: BarChart2,
-    color: 'text-blue-400',
-    iconBg: 'bg-blue-500/15 border-blue-500/30',
-    gradient: 'from-blue-500/10 via-navy-800 to-navy-900',
-    accent: 'bg-blue-400',
-    tag: 'Analytics',
-    title: 'Track Your Sales',
-    desc: 'Real-time dashboards and earnings reports. See exactly how your books perform across every market.',
-    cta: 'View Dashboard',
-    ctaClass: 'bg-blue-500 text-white hover:bg-blue-400',
-    dot: 'bg-blue-400',
+    icon: Headphones,
+    brandColor: '#1DB954',
+    brandColorLight: 'rgba(29,185,84,0.15)',
+    brandColorBorder: 'rgba(29,185,84,0.35)',
+    glowColor: '#1DB954',
+    gradientFrom: 'rgba(29,185,84,0.12)',
+    brand: 'Spotify',
+    tag: 'Music & Podcasts',
+    title: 'Listen Without Limits',
+    desc: 'Stream over 100 million songs, discover new artists, and enjoy ad-free music anytime.',
+    cta: 'Try Free',
+    barColor: '#1DB954',
   },
   {
-    icon: Globe,
-    color: 'text-emerald-400',
-    iconBg: 'bg-emerald-500/15 border-emerald-500/30',
-    gradient: 'from-emerald-500/10 via-navy-800 to-navy-900',
-    accent: 'bg-emerald-400',
-    tag: 'Global Reach',
-    title: 'Go Global',
-    desc: 'Sell your books in 180+ countries. Connect with readers everywhere around the world.',
-    cta: 'Get Started',
-    ctaClass: 'bg-emerald-500 text-white hover:bg-emerald-400',
-    dot: 'bg-emerald-400',
+    icon: PlayCircle,
+    brandColor: '#E50914',
+    brandColorLight: 'rgba(229,9,20,0.15)',
+    brandColorBorder: 'rgba(229,9,20,0.35)',
+    glowColor: '#E50914',
+    gradientFrom: 'rgba(229,9,20,0.12)',
+    brand: 'Netflix',
+    tag: 'Streaming',
+    title: 'Watch Anywhere, Anytime',
+    desc: 'Unlimited movies, TV shows, and more. Watch on your phone, tablet, laptop, and TV.',
+    cta: 'Start Watching',
+    barColor: '#E50914',
   },
   {
-    icon: Users,
-    color: 'text-purple-400',
-    iconBg: 'bg-purple-500/15 border-purple-500/30',
-    gradient: 'from-purple-500/10 via-navy-800 to-navy-900',
-    accent: 'bg-purple-400',
-    tag: 'Community',
-    title: 'Grow Your Readers',
-    desc: 'Build a loyal readership. Connect directly with fans, manage your author page, and grow your brand.',
-    cta: 'Join Now',
-    ctaClass: 'bg-purple-500 text-white hover:bg-purple-400',
-    dot: 'bg-purple-400',
+    icon: Tv,
+    brandColor: '#1CE783',
+    brandColorLight: 'rgba(28,231,131,0.15)',
+    brandColorBorder: 'rgba(28,231,131,0.35)',
+    glowColor: '#1CE783',
+    gradientFrom: 'rgba(28,231,131,0.12)',
+    brand: 'Hulu',
+    tag: 'Live & On Demand',
+    title: 'Stream Live TV & More',
+    desc: 'Watch live TV, sports, news, and thousands of shows and movies. No cable required.',
+    cta: 'Get Hulu',
+    barColor: '#1CE783',
   },
 ];
 
@@ -128,29 +132,54 @@ export default function HomePage() {
             const Icon = ad.icon;
             return (
               <div
-                className={`w-44 rounded-2xl border border-navy-700 bg-gradient-to-b ${ad.gradient} flex flex-col items-center justify-between gap-4 text-center p-6 transition-opacity duration-400 overflow-hidden relative`}
-                style={{ minHeight: '520px', opacity: fading ? 0 : 1, transition: 'opacity 0.4s ease' }}
+                className="w-44 rounded-2xl border border-navy-700 flex flex-col items-center justify-between gap-4 text-center p-6 overflow-hidden relative"
+                style={{
+                  minHeight: '520px',
+                  opacity: fading ? 0 : 1,
+                  transition: 'opacity 0.4s ease',
+                  background: `linear-gradient(to bottom, ${ad.gradientFrom}, #1e293b, #0f172a)`,
+                }}
               >
                 {/* Glow blob */}
-                <div className={`absolute -top-8 left-1/2 -translate-x-1/2 w-32 h-32 rounded-full blur-3xl opacity-20 ${ad.accent}`} />
+                <div
+                  className="absolute -top-8 left-1/2 -translate-x-1/2 w-32 h-32 rounded-full blur-3xl opacity-25"
+                  style={{ backgroundColor: ad.glowColor }}
+                />
 
                 <div className="relative z-10 flex flex-col items-center gap-4 flex-1 justify-center">
-                  {/* Tag */}
-                  <span className={`px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-widest border ${ad.iconBg} ${ad.color}`}>
+                  {/* Brand name */}
+                  <span
+                    className="text-xs font-black uppercase tracking-widest"
+                    style={{ color: ad.brandColor }}
+                  >
+                    {ad.brand}
+                  </span>
+
+                  {/* Tag pill */}
+                  <span
+                    className="px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-widest border"
+                    style={{ color: ad.brandColor, backgroundColor: ad.brandColorLight, borderColor: ad.brandColorBorder }}
+                  >
                     {ad.tag}
                   </span>
 
                   {/* Icon */}
-                  <div className={`w-16 h-16 rounded-2xl border flex items-center justify-center ${ad.iconBg}`}>
-                    <Icon className={`w-8 h-8 ${ad.color}`} />
+                  <div
+                    className="w-16 h-16 rounded-2xl border flex items-center justify-center"
+                    style={{ backgroundColor: ad.brandColorLight, borderColor: ad.brandColorBorder }}
+                  >
+                    <Icon className="w-8 h-8" style={{ color: ad.brandColor }} />
                   </div>
 
                   {/* Text */}
-                  <p className="text-base font-extrabold text-white leading-tight">{ad.title}</p>
+                  <p className="text-sm font-extrabold text-white leading-tight">{ad.title}</p>
                   <p className="text-[11px] text-slate-400 leading-relaxed">{ad.desc}</p>
 
                   {/* CTA */}
-                  <button className={`mt-2 px-5 py-2 rounded-xl text-xs font-bold transition-colors ${ad.ctaClass}`}>
+                  <button
+                    className="mt-2 px-5 py-2 rounded-xl text-xs font-bold text-white transition-opacity hover:opacity-90"
+                    style={{ backgroundColor: ad.brandColor }}
+                  >
                     {ad.cta}
                   </button>
                 </div>
@@ -161,7 +190,12 @@ export default function HomePage() {
                     <button
                       key={i}
                       onClick={() => { setFading(true); setTimeout(() => { setAdIndex(i); setFading(false); }, 400); }}
-                      className={`rounded-full transition-all duration-300 ${i === adIndex ? `w-5 h-1.5 ${ad.accent}` : 'w-1.5 h-1.5 bg-navy-600 hover:bg-navy-500'}`}
+                      className="rounded-full transition-all duration-300"
+                      style={{
+                        width: i === adIndex ? '20px' : '6px',
+                        height: '6px',
+                        backgroundColor: i === adIndex ? ad.brandColor : '#334155',
+                      }}
                     />
                   ))}
                 </div>
@@ -170,8 +204,11 @@ export default function HomePage() {
                 <div className="absolute bottom-0 left-0 right-0 h-0.5 bg-navy-700">
                   <div
                     key={adIndex}
-                    className={`h-full ${ad.accent} rounded-full`}
-                    style={{ animation: fading ? 'none' : 'adProgress 7s linear forwards' }}
+                    className="h-full rounded-full"
+                    style={{
+                      backgroundColor: ad.brandColor,
+                      animation: fading ? 'none' : 'adProgress 7s linear forwards',
+                    }}
                   />
                 </div>
               </div>
