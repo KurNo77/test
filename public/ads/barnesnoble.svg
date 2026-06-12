@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 80">
+  <rect width="200" height="80" fill="#1D7A4E" rx="10"/>
+  <text x="50%" y="38" text-anchor="middle" font-family="Georgia, serif" font-size="26" font-weight="900" fill="white" letter-spacing="1">B&amp;N</text>
+  <text x="50%" y="60" text-anchor="middle" font-family="Georgia, serif" font-size="10" fill="rgba(255,255,255,0.8)" letter-spacing="2">BOOKSELLERS</text>
+</svg>

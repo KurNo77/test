@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 80">
+  <rect width="200" height="80" fill="#141414" rx="10"/>
+  <!-- Netflix N lettermark -->
+  <g transform="translate(20, 12)">
+    <polygon points="0,0 14,0 14,56 0,56" fill="#E50914"/>
+    <polygon points="0,0 42,56 42,0 28,0 28,56" fill="#E50914"/>
+    <polygon points="0,0 14,0 42,56 28,56" fill="#B20710"/>
+    <polygon points="28,0 42,0 42,56 28,56" fill="#E50914"/>
+  </g>
+  <!-- NETFLIX text -->
+  <text x="80" y="46" font-family="Arial Black, sans-serif" font-size="22" font-weight="900" fill="#E50914" letter-spacing="2">NETFLIX</text>
+</svg>

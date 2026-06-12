@@ -8,6 +8,7 @@ import { BookOpen, Users, BarChart2, Globe, ArrowRight, Headphones, Tv, PlayCirc
 const ADS = [
   {
     icon: BookOpen,
+    img: '/ads/barnesnoble.svg',
     brandColor: '#1D7A4E',
     brandColorLight: 'rgba(29,122,78,0.15)',
     brandColorBorder: 'rgba(29,122,78,0.35)',
@@ -22,6 +23,7 @@ const ADS = [
   },
   {
     icon: Headphones,
+    img: '/ads/spotify.svg',
     brandColor: '#1DB954',
     brandColorLight: 'rgba(29,185,84,0.15)',
     brandColorBorder: 'rgba(29,185,84,0.35)',
@@ -36,6 +38,7 @@ const ADS = [
   },
   {
     icon: PlayCircle,
+    img: '/ads/netflix.svg',
     brandColor: '#E50914',
     brandColorLight: 'rgba(229,9,20,0.15)',
     brandColorBorder: 'rgba(229,9,20,0.35)',
@@ -50,6 +53,7 @@ const ADS = [
   },
   {
     icon: Tv,
+    img: '/ads/hulu.svg',
     brandColor: '#1CE783',
     brandColorLight: 'rgba(28,231,131,0.15)',
     brandColorBorder: 'rgba(28,231,131,0.35)',
@@ -129,7 +133,6 @@ export default function HomePage() {
 
           {(() => {
             const ad = ADS[adIndex];
-            const Icon = ad.icon;
             return (
               <div
                 className="w-44 rounded-2xl border border-navy-700 flex flex-col items-center justify-between gap-4 text-center p-6 overflow-hidden relative"
@@ -146,14 +149,15 @@ export default function HomePage() {
                   style={{ backgroundColor: ad.glowColor }}
                 />
 
-                <div className="relative z-10 flex flex-col items-center gap-4 flex-1 justify-center">
-                  {/* Brand name */}
-                  <span
-                    className="text-xs font-black uppercase tracking-widest"
-                    style={{ color: ad.brandColor }}
-                  >
-                    {ad.brand}
-                  </span>
+                <div className="relative z-10 flex flex-col items-center gap-3 flex-1 justify-center w-full">
+                  {/* Brand image banner */}
+                  <div className="w-full rounded-xl overflow-hidden border border-navy-700/60" style={{ height: '72px' }}>
+                    <img
+                      src={ad.img}
+                      alt={ad.brand}
+                      className="w-full h-full object-cover"
+                    />
+                  </div>
 
                   {/* Tag pill */}
                   <span
@@ -163,21 +167,13 @@ export default function HomePage() {
                     {ad.tag}
                   </span>
 
-                  {/* Icon */}
-                  <div
-                    className="w-16 h-16 rounded-2xl border flex items-center justify-center"
-                    style={{ backgroundColor: ad.brandColorLight, borderColor: ad.brandColorBorder }}
-                  >
-                    <Icon className="w-8 h-8" style={{ color: ad.brandColor }} />
-                  </div>
-
                   {/* Text */}
-                  <p className="text-sm font-extrabold text-white leading-tight">{ad.title}</p>
-                  <p className="text-[11px] text-slate-400 leading-relaxed">{ad.desc}</p>
+                  <p className="text-sm font-extrabold text-white leading-tight text-center">{ad.title}</p>
+                  <p className="text-[11px] text-slate-400 leading-relaxed text-center">{ad.desc}</p>
 
                   {/* CTA */}
                   <button
-                    className="mt-2 px-5 py-2 rounded-xl text-xs font-bold text-white transition-opacity hover:opacity-90"
+                    className="mt-1 px-5 py-2 rounded-xl text-xs font-bold text-white transition-opacity hover:opacity-90"
                     style={{ backgroundColor: ad.brandColor }}
                   >
                     {ad.cta}
