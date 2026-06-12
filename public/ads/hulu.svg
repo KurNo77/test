@@ -1,9 +1,5 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 80">
-  <rect width="200" height="80" fill="#0B0C0F" rx="10"/>
-  <!-- Hulu green accent bar -->
-  <rect x="0" y="0" width="6" height="80" fill="#1CE783" rx="3"/>
-  <!-- hulu wordmark -->
-  <text x="50%" y="50" text-anchor="middle" font-family="Arial, sans-serif" font-size="34" font-weight="900" fill="white" letter-spacing="3">hulu</text>
-  <!-- green dot accent -->
-  <circle cx="168" cy="28" r="6" fill="#1CE783"/>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 60">
+  <rect width="200" height="60" fill="#0B0C0F"/>
+  <text x="100" y="36" text-anchor="middle" font-family="Arial, sans-serif" font-size="28" font-weight="900" fill="white" letter-spacing="4">hulu</text>
+  <rect x="70" y="44" width="60" height="3" fill="#1CE783" rx="2"/>
 </svg>

@@ -151,11 +151,11 @@ export default function HomePage() {
 
                 <div className="relative z-10 flex flex-col items-center gap-3 flex-1 justify-center w-full">
                   {/* Brand image banner */}
-                  <div className="w-full rounded-xl overflow-hidden border border-navy-700/60" style={{ height: '72px' }}>
+                  <div className="w-full rounded-xl overflow-hidden border border-navy-700/60" style={{ height: '52px' }}>
                     <img
                       src={ad.img}
                       alt={ad.brand}
-                      className="w-full h-full object-cover"
+                      className="w-full h-full object-contain"
                     />
                   </div>
 
