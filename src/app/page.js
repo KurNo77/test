@@ -1,13 +1,81 @@
 'use client';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { useRouter } from 'next/navigation';
 import Link from 'next/link';
 import { useAuth } from '@/context/AuthContext';
 import { BookOpen, Users, BarChart2, Globe, ArrowRight } from 'lucide-react';
 
+const ADS = [
+  {
+    icon: BookOpen,
+    color: 'text-gold-500',
+    iconBg: 'bg-gold-500/15 border-gold-500/30',
+    gradient: 'from-gold-500/10 via-navy-800 to-navy-900',
+    accent: 'bg-gold-500',
+    tag: 'For Authors',
+    title: 'Publish Your Book',
+    desc: 'Reach millions of readers on Amazon. List your book today and start earning royalties worldwide.',
+    cta: 'Learn More',
+    ctaClass: 'bg-gold-500 text-navy-900 hover:bg-gold-400',
+    dot: 'bg-gold-500',
+  },
+  {
+    icon: BarChart2,
+    color: 'text-blue-400',
+    iconBg: 'bg-blue-500/15 border-blue-500/30',
+    gradient: 'from-blue-500/10 via-navy-800 to-navy-900',
+    accent: 'bg-blue-400',
+    tag: 'Analytics',
+    title: 'Track Your Sales',
+    desc: 'Real-time dashboards and earnings reports. See exactly how your books perform across every market.',
+    cta: 'View Dashboard',
+    ctaClass: 'bg-blue-500 text-white hover:bg-blue-400',
+    dot: 'bg-blue-400',
+  },
+  {
+    icon: Globe,
+    color: 'text-emerald-400',
+    iconBg: 'bg-emerald-500/15 border-emerald-500/30',
+    gradient: 'from-emerald-500/10 via-navy-800 to-navy-900',
+    accent: 'bg-emerald-400',
+    tag: 'Global Reach',
+    title: 'Go Global',
+    desc: 'Sell your books in 180+ countries. Connect with readers everywhere around the world.',
+    cta: 'Get Started',
+    ctaClass: 'bg-emerald-500 text-white hover:bg-emerald-400',
+    dot: 'bg-emerald-400',
+  },
+  {
+    icon: Users,
+    color: 'text-purple-400',
+    iconBg: 'bg-purple-500/15 border-purple-500/30',
+    gradient: 'from-purple-500/10 via-navy-800 to-navy-900',
+    accent: 'bg-purple-400',
+    tag: 'Community',
+    title: 'Grow Your Readers',
+    desc: 'Build a loyal readership. Connect directly with fans, manage your author page, and grow your brand.',
+    cta: 'Join Now',
+    ctaClass: 'bg-purple-500 text-white hover:bg-purple-400',
+    dot: 'bg-purple-400',
+  },
+];
+
 export default function HomePage() {
   const { user, profile, loading } = useAuth();
   const router = useRouter();
+  const [adIndex, setAdIndex] = useState(0);
+  const [fading, setFading] = useState(false);
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setFading(true);
+      setTimeout(() => {
+        setAdIndex((i) => (i + 1) % ADS.length);
+        setFading(false);
+      }, 400);
+    }, 7000);
+    return () => clearInterval(timer);
+  }, []);
 
   useEffect(() => {
     if (loading) return;
@@ -51,38 +119,71 @@ export default function HomePage() {
       {/* ── Hero ── */}
       <section className="flex-1 w-full py-20 flex flex-col lg:flex-row items-start gap-0">
 
-        {/* ── Left Ad Banner ── */}
-        <aside className="hidden xl:flex flex-col items-center gap-3 px-4 pt-2 shrink-0 w-44">
+        {/* ── Left Ad Banner — rotating ── */}
+        <aside className="hidden xl:flex flex-col items-center gap-3 px-4 pt-2 shrink-0 w-52">
           <p className="text-[10px] text-slate-600 uppercase tracking-widest font-medium">Advertisement</p>
 
-          {/* Ad slot 1 — skyscraper */}
-          <div className="w-36 h-72 rounded-2xl border border-navy-700 bg-navy-800/60 flex flex-col items-center justify-center gap-3 text-center p-4 hover:border-gold-500/30 transition-colors">
-            <div className="w-10 h-10 rounded-xl bg-gold-500/10 border border-gold-500/20 flex items-center justify-center">
-              <BookOpen className="w-5 h-5 text-gold-500" />
-            </div>
-            <p className="text-xs font-bold text-slate-300">Publish Your Book</p>
-            <p className="text-[11px] text-slate-500 leading-tight">Reach millions of readers on Amazon today</p>
-            <span className="mt-1 px-3 py-1 rounded-full bg-gold-500/10 border border-gold-500/20 text-[11px] text-gold-500 font-semibold">Learn More</span>
-          </div>
+          {(() => {
+            const ad = ADS[adIndex];
+            const Icon = ad.icon;
+            return (
+              <div
+                className={`w-44 rounded-2xl border border-navy-700 bg-gradient-to-b ${ad.gradient} flex flex-col items-center justify-between gap-4 text-center p-6 transition-opacity duration-400 overflow-hidden relative`}
+                style={{ minHeight: '520px', opacity: fading ? 0 : 1, transition: 'opacity 0.4s ease' }}
+              >
+                {/* Glow blob */}
+                <div className={`absolute -top-8 left-1/2 -translate-x-1/2 w-32 h-32 rounded-full blur-3xl opacity-20 ${ad.accent}`} />
 
-          {/* Ad slot 2 — square */}
-          <div className="w-36 h-36 rounded-2xl border border-navy-700 bg-navy-800/60 flex flex-col items-center justify-center gap-2 text-center p-3 hover:border-blue-500/30 transition-colors">
-            <div className="w-8 h-8 rounded-lg bg-blue-500/10 border border-blue-500/20 flex items-center justify-center">
-              <BarChart2 className="w-4 h-4 text-blue-400" />
-            </div>
-            <p className="text-xs font-bold text-slate-300">Track Sales</p>
-            <p className="text-[10px] text-slate-500 leading-tight">Real-time analytics for authors</p>
-          </div>
+                <div className="relative z-10 flex flex-col items-center gap-4 flex-1 justify-center">
+                  {/* Tag */}
+                  <span className={`px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-widest border ${ad.iconBg} ${ad.color}`}>
+                    {ad.tag}
+                  </span>
 
-          {/* Ad slot 3 — tall */}
-          <div className="w-36 h-48 rounded-2xl border border-navy-700 bg-navy-800/60 flex flex-col items-center justify-center gap-2 text-center p-4 hover:border-emerald-500/30 transition-colors">
-            <div className="w-9 h-9 rounded-xl bg-emerald-500/10 border border-emerald-500/20 flex items-center justify-center">
-              <Globe className="w-4 h-4 text-emerald-400" />
-            </div>
-            <p className="text-xs font-bold text-slate-300">Go Global</p>
-            <p className="text-[10px] text-slate-500 leading-tight">Sell your books in 180+ countries worldwide</p>
-            <span className="mt-1 px-3 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-[10px] text-emerald-400 font-semibold">Get Started</span>
-          </div>
+                  {/* Icon */}
+                  <div className={`w-16 h-16 rounded-2xl border flex items-center justify-center ${ad.iconBg}`}>
+                    <Icon className={`w-8 h-8 ${ad.color}`} />
+                  </div>
+
+                  {/* Text */}
+                  <p className="text-base font-extrabold text-white leading-tight">{ad.title}</p>
+                  <p className="text-[11px] text-slate-400 leading-relaxed">{ad.desc}</p>
+
+                  {/* CTA */}
+                  <button className={`mt-2 px-5 py-2 rounded-xl text-xs font-bold transition-colors ${ad.ctaClass}`}>
+                    {ad.cta}
+                  </button>
+                </div>
+
+                {/* Progress dots */}
+                <div className="relative z-10 flex items-center gap-1.5 mt-2">
+                  {ADS.map((_, i) => (
+                    <button
+                      key={i}
+                      onClick={() => { setFading(true); setTimeout(() => { setAdIndex(i); setFading(false); }, 400); }}
+                      className={`rounded-full transition-all duration-300 ${i === adIndex ? `w-5 h-1.5 ${ad.accent}` : 'w-1.5 h-1.5 bg-navy-600 hover:bg-navy-500'}`}
+                    />
+                  ))}
+                </div>
+
+                {/* Progress bar */}
+                <div className="absolute bottom-0 left-0 right-0 h-0.5 bg-navy-700">
+                  <div
+                    key={adIndex}
+                    className={`h-full ${ad.accent} rounded-full`}
+                    style={{ animation: fading ? 'none' : 'adProgress 7s linear forwards' }}
+                  />
+                </div>
+              </div>
+            );
+          })()}
+
+          <style>{`
+            @keyframes adProgress {
+              from { width: 0% }
+              to   { width: 100% }
+            }
+          `}</style>
         </aside>
 
         {/* ── Main Hero Content ── */}
