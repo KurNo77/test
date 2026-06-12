@@ -8,7 +8,7 @@ import { BookOpen, Users, BarChart2, Globe, ArrowRight, Headphones, Tv, PlayCirc
 const ADS = [
   {
     icon: BookOpen,
-    img: '/ads/barnesnoble.svg',
+    img: '/ads/barnesnoble.png',
     brandColor: '#1D7A4E',
     brandColorLight: 'rgba(29,122,78,0.15)',
     brandColorBorder: 'rgba(29,122,78,0.35)',
@@ -23,7 +23,7 @@ const ADS = [
   },
   {
     icon: Headphones,
-    img: '/ads/spotify.svg',
+    img: '/ads/spotify.png',
     brandColor: '#1DB954',
     brandColorLight: 'rgba(29,185,84,0.15)',
     brandColorBorder: 'rgba(29,185,84,0.35)',
@@ -53,7 +53,7 @@ const ADS = [
   },
   {
     icon: Tv,
-    img: '/ads/hulu.svg',
+    img: '/ads/hulu.png',
     brandColor: '#1CE783',
     brandColorLight: 'rgba(28,231,131,0.15)',
     brandColorBorder: 'rgba(28,231,131,0.35)',
