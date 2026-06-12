@@ -17,7 +17,7 @@ const ADS = [
     brand: 'Barnes & Noble',
     tag: 'Books & More',
     title: 'Discover Your Next Great Read',
-    desc: 'Millions of books, eBooks, NOOK titles, and textbooks. Free shipping on orders over $35.',
+    desc: 'Millions of books, ebooks, NOOK titles, and textbooks. Free shipping on orders over $35.',
     cta: 'Shop Now',
     barColor: '#1D7A4E',
   },
