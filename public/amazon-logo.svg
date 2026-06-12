@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <defs>
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@900&amp;display=swap');
+    </style>
+  </defs>
+  <!-- Styled "a" using a heavy rounded font -->
+  <text x="50" y="75"
+        text-anchor="middle"
+        font-family="'Montserrat', 'Arial Black', sans-serif"
+        font-size="88"
+        font-weight="900"
+        fill="white">a</text>
+</svg>

@@ -1,0 +1,125 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  *, *::before, *::after {
+    box-sizing: border-box;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-navy-900 text-white font-sans antialiased;
+    min-height: 100vh;
+  }
+
+  ::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
+  ::-webkit-scrollbar-track {
+    @apply bg-navy-800;
+  }
+  ::-webkit-scrollbar-thumb {
+    @apply bg-navy-600 rounded-full;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    @apply bg-gold-500;
+  }
+
+  input, textarea, select {
+    outline: none;
+  }
+}
+
+@layer components {
+  /* ── Gold gradient button ───────────── */
+  .btn-gold {
+    @apply bg-gradient-to-r from-gold-500 to-gold-600 text-navy-900 font-semibold
+           px-6 py-3 rounded-xl hover:from-gold-400 hover:to-gold-500
+           transition-all duration-200 active:scale-[0.98]
+           shadow-md hover:shadow-gold focus:outline-none focus:ring-2 focus:ring-gold-400;
+  }
+
+  /* ── Outline button ─────────────────── */
+  .btn-outline {
+    @apply border border-gold-500 text-gold-500 font-semibold
+           px-6 py-3 rounded-xl hover:bg-gold-500 hover:text-navy-900
+           transition-all duration-200 active:scale-[0.98]
+           focus:outline-none focus:ring-2 focus:ring-gold-400;
+  }
+
+  /* ── Ghost danger button ────────────── */
+  .btn-danger {
+    @apply border border-red-500 text-red-400 font-semibold
+           px-5 py-2.5 rounded-xl hover:bg-red-500 hover:text-white
+           transition-all duration-200 text-sm;
+  }
+
+  /* ── Input field ────────────────────── */
+  .input-field {
+    @apply w-full bg-navy-800 border border-navy-700 text-white placeholder-navy-600
+           rounded-xl px-4 py-3 focus:border-gold-500 focus:ring-1 focus:ring-gold-500
+           transition-colors duration-200;
+  }
+
+  /* ── Dashboard card ─────────────────── */
+  .dash-card {
+    @apply bg-navy-800 border border-navy-700 rounded-2xl p-6
+           hover:border-gold-500/30 transition-all duration-300
+           shadow-card hover:shadow-card-hover animate-fade-in;
+  }
+
+  /* ── Section title ──────────────────── */
+  .section-title {
+    @apply text-xl font-bold text-white;
+  }
+
+  /* ── Gold accent text ───────────────── */
+  .text-gold {
+    @apply text-gold-500;
+  }
+
+  /* ── Status badge ───────────────────── */
+  .badge-active    { @apply inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-emerald-900/50 text-emerald-400 border border-emerald-800; }
+  .badge-suspended { @apply inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-red-900/50 text-red-400 border border-red-800; }
+  .badge-pending   { @apply inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-amber-900/50 text-amber-400 border border-amber-800; }
+
+  /* ── Table ──────────────────────────── */
+  .data-table {
+    @apply w-full text-sm;
+  }
+  .data-table th {
+    @apply text-left text-navy-600 font-semibold uppercase tracking-wider text-xs px-4 py-3 border-b border-navy-700;
+  }
+  .data-table td {
+    @apply px-4 py-3.5 border-b border-navy-800/50 text-slate-300;
+  }
+  .data-table tr:hover td {
+    @apply bg-navy-800/40;
+  }
+
+  /* ── Sidebar nav link ───────────────── */
+  .nav-link {
+    @apply flex items-center gap-3 px-4 py-3 rounded-xl text-slate-400
+           hover:text-white hover:bg-navy-800 transition-all duration-200
+           cursor-pointer font-medium;
+  }
+  .nav-link.active {
+    @apply bg-gold-500/10 text-gold-400 border border-gold-500/20;
+  }
+
+  /* ── Modal overlay ──────────────────── */
+  .modal-overlay {
+    @apply fixed inset-0 bg-black/70 backdrop-blur-sm z-50
+           flex items-center justify-center p-4 animate-fade-in;
+  }
+  .modal-box {
+    @apply bg-navy-800 border border-navy-700 rounded-2xl p-6 w-full max-w-lg
+           shadow-2xl animate-slide-up;
+  }
+}
