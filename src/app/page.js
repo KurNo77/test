@@ -38,7 +38,7 @@ const ADS = [
   },
   {
     icon: PlayCircle,
-    img: '/ads/netflix.png',
+    img: '/ads/netflix_124x50.png',
     brandColor: '#E50914',
     brandColorLight: 'rgba(229,9,20,0.15)',
     brandColorBorder: 'rgba(229,9,20,0.35)',
