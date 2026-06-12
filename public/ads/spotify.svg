@@ -1,9 +1,7 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 60">
   <rect width="200" height="60" fill="#121212"/>
-  <!-- wave lines -->
-  <path d="M72 20 Q100 14 128 20" stroke="#1DB954" stroke-width="3" fill="none" stroke-linecap="round"/>
-  <path d="M78 28 Q100 23 122 28" stroke="#1DB954" stroke-width="2.5" fill="none" stroke-linecap="round"/>
-  <path d="M83 36 Q100 32 117 36" stroke="#1DB954" stroke-width="2" fill="none" stroke-linecap="round"/>
-  <!-- Spotify text -->
-  <text x="100" y="52" text-anchor="middle" font-family="Arial, sans-serif" font-size="14" font-weight="700" fill="#1DB954" letter-spacing="2">Spotify</text>
+  <text x="100" y="40" text-anchor="middle"
+    font-family="Arial, Helvetica, sans-serif"
+    font-size="28" font-weight="700"
+    fill="#1DB954" letter-spacing="1">Spotify</text>
 </svg>
