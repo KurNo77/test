@@ -8,7 +8,7 @@ import { BookOpen, Users, BarChart2, Globe, ArrowRight, Headphones, Tv, PlayCirc
 const ADS = [
   {
     icon: BookOpen,
-    img: '/ads/barnesandnobles.png',
+    img: '/ads/barnesnoble.png',
     brandColor: '#1D7A4E',
     brandColorLight: 'rgba(29,122,78,0.15)',
     brandColorBorder: 'rgba(29,122,78,0.35)',
